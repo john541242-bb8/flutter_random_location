@@ -20,7 +20,7 @@ class _RandomPlaceState extends State<RandomPlace> {
   String randomPlaceName = "";
 
   int repeatTimes = 20;
-  int previousIndex = 0;
+  int previousIndex = -1;
   late Timer randomChangeNumTimer;
   bool goDown = true;
   void startRandom() {
@@ -32,7 +32,7 @@ class _RandomPlaceState extends State<RandomPlace> {
         do {
           i = random.nextInt(widget.places.length);
         } while (previousIndex == i);
-        previousIndex = i;
+        if (widget.places.length > 1) previousIndex = i;
         dependence.Place randomPlace = widget.places[i];
         setState(() {
           randomPlaceName = randomPlace.name;
