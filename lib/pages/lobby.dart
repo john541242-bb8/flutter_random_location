@@ -52,7 +52,22 @@ class Lobby extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.search, size: 100),
+            Stack(
+              children: [
+                Icon(Icons.search, size: 100),
+                Positioned(
+                  height: 70,
+                  bottom: 25,
+                  left: 20,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      scale: 0.1,
+                      "https://i.pinimg.com/736x/ae/aa/b2/aeaab2657dfa7ec6ea4f2ff9be35c6a8.jpg",
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 70.0),
               child: Divider(),
@@ -140,9 +155,19 @@ class Lobby extends StatelessWidget {
                 searchMod.roller_coaster,
               ],
               buttonText: "景點",
-              icon: FontAwesomeIcons.store,
+              icon: FontAwesomeIcons.suitcase,
             ),
           ],
+        ),
+      ),
+
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            "此app會尋找附近450公尺內符合類型並且當下在營業的地點",
+            style: TextStyle(fontSize: 10, fontFamily: "GlowSCLight"),
+          ),
         ),
       ),
     );

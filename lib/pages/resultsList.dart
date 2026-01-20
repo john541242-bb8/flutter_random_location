@@ -111,7 +111,7 @@ class _ResultslistState extends State<Resultslist> {
           child: Divider(),
         ),
         Text(
-          "附近沒有這類型的位置",
+          "附近沒有這類型的位置 or 沒開",
           style: TextStyle(fontFamily: "GlowSCLight", fontSize: 25),
         ),
       ],
@@ -225,12 +225,12 @@ class _ResultslistState extends State<Resultslist> {
       });
 
       reusltsList.forEach((e) {
-        if (e["currentOpeningHours"]["openNow"]) {
-          setState(() {
-            bool haveRating = true;
-            bool havePrice = true;
-            if (e["rating"] == null) haveRating = false;
-            if (e["priceRange"] == null) havePrice = false;
+        setState(() {
+          bool haveRating = e["rating"] != null;
+          bool havePrice = e["priceRange"] != null;
+          bool haveOpeningHour = e["currentOpeningHours"] != null;
+          if (haveOpeningHour &&
+              e["currentOpeningHours"]["openNow"]) {
             placeList.add(
               Place(
                 name: e["displayName"]["text"],
@@ -252,8 +252,8 @@ class _ResultslistState extends State<Resultslist> {
                 googlemapUrl: e["googleMapsUri"],
               ),
             );
-          });
-        }
+          }
+        });
       });
       setState(() {
         searchDone = true;
@@ -478,7 +478,27 @@ class _ResultslistState extends State<Resultslist> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return RandomPlace(places: placeList);
+                  List<Place> newList = List.from(placeList);
+
+                  if (newList.length == 1) {
+                    print(placeList.length);
+
+                    newList.add(
+                      Place(
+                        name:
+                            "प्रियबिडालाः भवतः हृदयस्य शून्यतां पूरयन्ति (/▽＼)",
+                        location: Location(
+                          latitude: 99999,
+                          longitude: 99999,
+                        ),
+                        rate: 3.14159,
+                        googlemapUrl:
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9YtkVBS3u5cbvve6k8ElNOkLXCEixS3fmbA&s",
+                      ),
+                    );
+                    print(placeList.length);
+                  }
+                  return RandomPlace(places: newList);
                 },
               );
             }

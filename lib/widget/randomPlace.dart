@@ -81,24 +81,27 @@ class _RandomPlaceState extends State<RandomPlace> {
       alignment: AlignmentGeometry.center,
       children: [
         Center(
-          child: TextButton(
-            onPressed: () async {
-              launchUrl(
-                Uri.parse(placeUrl),
-                mode: LaunchMode.externalApplication,
-              );
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
-            ),
-            child: FittedBox(
-              child: DefaultTextStyle(
-                style: TextStyle(
-                  fontFamily: "GlowSCLight",
-                  color: Colors.white,
-                  fontSize: 50,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: TextButton(
+              onPressed: () async {
+                launchUrl(
+                  Uri.parse(placeUrl),
+                  mode: LaunchMode.externalApplication,
+                );
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+              ),
+              child: FittedBox(
+                child: DefaultTextStyle(
+                  style: TextStyle(
+                    fontFamily: "GlowSCLight",
+                    color: Colors.white,
+                    fontSize: 50,
+                  ),
+                  child: Text(randomPlaceName),
                 ),
-                child: Text(randomPlaceName),
               ),
             ),
           ),
