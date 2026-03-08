@@ -12,4 +12,4 @@
 
 (目前只提供android使用apk下載)
 
-![圖片](https://colossal-azure-8ikbg4bs7w.edgeone.app/Screenshot_20260228_121743.png "圖片")
+![圖片](https://photos.fife.usercontent.google.com/pw/AP1GczMOJWG9PnqYDwvr2UlG7v_adFKQ0o8_gLK6TDRp6H3HtZsAQM5kUdok=w532-h1306-s-no-gm?authuser=0 "圖片")
