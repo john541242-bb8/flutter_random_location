@@ -52,21 +52,24 @@ class Lobby extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Stack(
-              children: [
-                Icon(Icons.search, size: 100),
-                Positioned(
-                  height: 70,
-                  bottom: 25,
-                  left: 20,
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      scale: 0.1,
-                      "https://i.pinimg.com/736x/ae/aa/b2/aeaab2657dfa7ec6ea4f2ff9be35c6a8.jpg",
+            Transform.scale(
+              scale: 1.2,
+              child: Stack(
+                children: [
+                  Icon(Icons.search, size: 100),
+                  Positioned(
+                    height: 70,
+                    bottom: 25,
+                    left: 21.5,
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundImage: AssetImage(
+                        "images/CatIcon.jpg",
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 70.0),

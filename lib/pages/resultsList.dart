@@ -224,13 +224,15 @@ class _ResultslistState extends State<Resultslist> {
         print(e["rating"].runtimeType);
       });
 
-      reusltsList.forEach((e) {
+      reusltsList.forEach((e) async {
         setState(() {
           bool haveRating = e["rating"] != null;
           bool havePrice = e["priceRange"] != null;
           bool haveOpeningHour = e["currentOpeningHours"] != null;
-          if (haveOpeningHour &&
-              e["currentOpeningHours"]["openNow"]) {
+          bool openNow = haveOpeningHour == true
+              ? e["currentOpeningHours"]["openNow"] ?? false
+              : false;
+          if (haveOpeningHour && openNow) {
             placeList.add(
               Place(
                 name: e["displayName"]["text"],
@@ -241,12 +243,12 @@ class _ResultslistState extends State<Resultslist> {
                 rate: haveRating == true ? e["rating"] : "尚無評分",
                 startPrice: havePrice == true
                     ? int.tryParse(
-                        e["priceRange"]["startPrice"]["units"],
+                        e["priceRange"]["startPrice"]["units"] ?? 0,
                       )
                     : null,
                 endPrice: havePrice == true
                     ? int.tryParse(
-                        e["priceRange"]["endPrice"]["units"],
+                        e["priceRange"]["endPrice"]["units"] ?? 0,
                       )
                     : null,
                 googlemapUrl: e["googleMapsUri"],
