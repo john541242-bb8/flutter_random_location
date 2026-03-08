@@ -7,8 +7,8 @@
 - 這一個app會自動尋找附近450公尺符合條件的地點列表，並在右方提供地圖查看
 - 如果你遲遲無法決定，在畫面的右下角有一個按鈕，按下去即可幫你隨機選取一個地點，省下了耗時的決定步驟，讓你的旅程由上天所支配。
 
-####原理：
-使用`Google places api`實現**NeabySearch**的功能。`Google maps api`實現**地圖顯示**的功能。`Google maps custom marker`達成**自定義google map上的標籤**的功能。
+### 原理：
+使用`Google places api`實現**NeabySearch**的功能。`Google maps api`實現**地圖顯示**的功能。[`Google maps custom marker`](https://pub.dev/packages/google_maps_custom_marker "`Google maps custom marker`")達成**自定義google map上的標籤**的功能。
 
 (目前只提供android使用apk下載)
 
